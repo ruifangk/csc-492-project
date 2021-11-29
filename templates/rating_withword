@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% block content %}
+    <style>
+    table.center {
+      margin-left: auto; 
+      margin-right: auto;
+    }
+
+    </style>
+
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2 text-center mt-4">
+            <form method="POST" action="{{ url_for('rating') }}">
+                <div class="slidecontainer">
+                    <p>How stressed do you feel lately (1-10)?</p>
+                    <input id="slider1" type="range" min="0" max="10" value="5" class="slider" name="stress_rating">
+                    <p id="demo1"></p>
+                    <br>
+                    <p>How content are you with the way your life if going (1-10)?</p>
+                    <input id="slider2" type="range" min="0" max="10" value="5" class="slider" name="positive_thinking_rating">
+                    <p id="demo2"></p>
+                    <br>
+                    <p>How highly do other people perceive of you (1-10)?</p>
+                    <input id="slider3" type="range" min="0" max="10" value="5" class="slider" name="recognize_stigma_rating">
+                    <p id="demo3"></p>
+                    <br>
+                    <p>How well can you solve problems?</p>
+                    <input id="slider4" type="range" min="0" max="10" value="5" class="slider" name="problem_solving_rating">
+                    <p id="demo4"></p>
+
+                    <br>
+                    <div class = "center">
+                      <input type="checkbox" id="Clam" name="Clam"
+                             checked>
+                      <label for="Clam">Clam</label>
+                      <p id="checkbox1"></p>
+                    </div>
+
+                    <div>
+                      <input type="checkbox" id="Confident" name="Confident">
+                      <label for="Confident">Confident</label>
+                      <p id="checkbox2"></p>
+                    </div>
+                    <div>
+                      <input type="checkbox" id="Agitated" name="Agitated">
+                      <label for="Agitated">Agitated</label>
+                      <p id="checkbox3"></p>
+                    </div>
+                    <div>
+                      <input type="checkbox" id="Scared" name="Scared">
+                      <label for="Scared">Scared</label>
+                      <p id="checkbox4"></p>
+                    </div>
+                    <div>
+                      <input type="checkbox" id="Relaxed" name="Relaxed">
+                      <label for="Relaxed">Relaxed</label>
+                      <p id="checkbox5"></p>
+                    </div>
+                    <div>
+                      <input type="checkbox" id="Awful" name="Awful">
+                      <label for="Awful">Awful</label>
+                      <p id="checkbox6"></p>
+                    </div>
+                    <br>
+
+                    <button type="submit" class="btn btn-lg btn-outline-dark mt-5 shadow" >Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        // NOTE: Link to sending a POST request from Javascript: https://api.jquery.com/jquery.post/
+        var slider1 = document.getElementById("slider1");
+        var output1 = document.getElementById("demo1");
+
+        var slider2 = document.getElementById("slider2");
+        var output2 = document.getElementById("demo2");
+
+        var slider3 = document.getElementById("slider3");
+        var output3 = document.getElementById("demo3");
+
+        var slider4 = document.getElementById("slider4");
+        var output4 = document.getElementById("demo4");
+
+        var Clam = document.getElementById("Clam");
+        var cb_output1 = document.getElementById("checkbox1");
+
+        var Confident = document.getElementById("Confident");
+        var cb_output2 = document.getElementById("checkbox2");
+
+        var Agitated = document.getElementById("Agitated");
+        var cb_output3 = document.getElementById("checkbox3");
+
+        var Scared = document.getElementById("Scared");
+        var cb_output4 = document.getElementById("checkbox4");
+
+        var Relaxed = document.getElementById("Relaxed");
+        var cb_output5 = document.getElementById("checkbox5");
+
+        var Awful = document.getElementById("Awful");
+        var cb_output6 = document.getElementById("checkbox6");
+
+        // Display the default slider value
+        output1.innerHTML = slider1.value; 
+        output2.innerHTML = slider2.value;
+        output3.innerHTML = slider3.value;
+        output4.innerHTML = slider4.value;
+
+
+        cb_output1.innerHTML = Clam.value; 
+        cb_output2.innerHTML = Confident.value; 
+        cb_output3.innerHTML = Agitated.value; 
+        cb_output4.innerHTML = Scared.value; 
+        cb_output5.innerHTML = Relaxed.value; 
+        cb_output6.innerHTML = Awful.value; 
+
+        // Update the current slider value (each time you drag the slider handle)
+        slider1.oninput = function() {
+            output1.innerHTML = this.value;
+        }
+
+        slider2.oninput = function() {
+            output2.innerHTML = this.value;
+        }
+
+        slider3.oninput = function() {
+            output3.innerHTML = this.value;
+        }
+
+        slider4.oninput = function() {
+            output4.innerHTML = this.value;
+        }
+
+        Clam.oninput = function() {
+            cb_output1.innerHTML = this.value;
+        }
+
+        Confident.oninput = function() {
+            cb_output2.innerHTML = this.value;
+        }
+
+        Agitated.oninput = function() {
+            cb_output3.innerHTML = this.value;
+        }
+
+        Scared.oninput = function() {
+            cb_output4.innerHTML = this.value;
+        }
+
+        Relaxed.oninput = function() {
+            cb_output5.innerHTML = this.value;
+        }
+
+        Awful.oninput = function() {
+            cb_output6.innerHTML = this.value;
+        }
+
+    </script>
+
+{% endblock content %}
